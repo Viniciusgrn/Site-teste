@@ -27,8 +27,8 @@ function hexToRgba(hex: string, alpha: number) {
 // ──────────────────────────── Week View ────────────────────────────
 
 const HOUR_HEIGHT = 64; // px per hour
-const START_HOUR = 6;
-const END_HOUR = 23;
+const START_HOUR = 0;
+const END_HOUR = 24;
 const TOTAL_HOURS = END_HOUR - START_HOUR;
 
 interface WeekEventProps {
@@ -170,7 +170,7 @@ function WeekView({ currentDate, events, groups, contexts, onEventClick, onSlotC
         <div className="week-time-gutter">
           {hours.map((h) => (
             <div key={h} className="hour-label" style={{ height: HOUR_HEIGHT }}>
-              {format(new Date().setHours(h, 0, 0, 0), 'HH:mm')}
+              {h === 24 ? '00:00' : format(new Date().setHours(h, 0, 0, 0), 'HH:mm')}
             </div>
           ))}
         </div>
